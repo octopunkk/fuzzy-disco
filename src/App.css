@@ -69,10 +69,33 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 
   &:hover {
     background-color: #b9b9b9;
   }
+}
+
+.bombWindow {
+  height: 100%;
+}
+
+.bombBg {
+  width: 100%;
+}
+
+.leftBomb {
+  height: 130px;
+  width: 110px;
+  position: relative;
+  transform: translate(0, -210px);
+}
+
+.rightBomb {
+  height: 130px;
+  width: 110px;
+  position: relative;
+  transform: translate(290px, -340px);
 }
 
 .has-grow {

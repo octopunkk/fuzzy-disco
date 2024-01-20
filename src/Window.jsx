@@ -19,10 +19,10 @@ function Window(props) {
         style={{
           display: open ? "" : "none",
           transform: `translate(${pos[0]}px, ${pos[1]}px)`,
+          height: props.height ? props.height : "400px",
         }}
-        {...windowProps}
       >
-        <div className="windowBar">
+        <div className="windowBar" {...windowProps}>
           <div className="has-grow" />
           <button className="close" onClick={() => setOpen(false)}>
             X

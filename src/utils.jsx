@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 
 export const useDraggable = (mousePos, clickAction) => {
   const [pos, setPos] = useState([
-    Math.random() * 0.7 * window.innerWidth,
-    Math.random() * 0.7 * window.innerHeight,
+    Math.random() * 0.5 * window.innerWidth,
+    Math.random() * 0.5 * window.innerHeight,
   ]);
   const [clickEv, setClickEv] = useState({
     isClicked: false,
