@@ -13,8 +13,7 @@ function Icon(props) {
       style={{
         height: `${ICON_SIZE}px`,
         width: `${ICON_SIZE}px`,
-        left: pos[0],
-        top: pos[1],
+        transform: `translate(${pos[0]}px, ${pos[1]}px)`,
       }}
       {...windowProps}
     >

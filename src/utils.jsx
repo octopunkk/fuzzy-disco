@@ -7,9 +7,8 @@ export const useDraggable = (mousePos, clickAction) => {
   ]);
   const [clickEv, setClickEv] = useState({
     isClicked: false,
-    xOnClick: 0,
-    yOnClick: 0,
-    offsetOnClick: 0,
+    mouseOnClick: [0, 0],
+    offsetOnClick: [0, 0],
   });
 
   useEffect(() => {
@@ -25,8 +24,7 @@ export const useDraggable = (mousePos, clickAction) => {
       onPointerDown: (e) => {
         setClickEv({
           isClicked: true,
-          xOnClick: e.clientX,
-          yOnClick: e.clientY,
+          mouseOnClick: [e.clientX, e.clientY],
           offsetOnClick: [pos[0] - e.clientX, pos[1] - e.clientY],
         });
       },
@@ -34,8 +32,8 @@ export const useDraggable = (mousePos, clickAction) => {
         setClickEv((c) => ({ ...c, isClicked: false }));
         if (
           clickAction &&
-          Math.abs(clickEv.xOnClick - mousePos[0]) < 5 &&
-          Math.abs(clickEv.yOnClick - mousePos[1]) < 5
+          Math.abs(clickEv.mouseOnClick[0] - mousePos[0]) < 5 &&
+          Math.abs(clickEv.mouseOnClick[1] - mousePos[1]) < 5
         ) {
           clickAction();
         }

@@ -16,8 +16,10 @@ function Window(props) {
       />
       <div
         className="window"
-        // use transform:translate3d() to make it way faster to update than left/top
-        style={{ display: open ? "" : "none", left: pos[0], top: pos[1] }}
+        style={{
+          display: open ? "" : "none",
+          transform: `translate(${pos[0]}px, ${pos[1]}px)`,
+        }}
         {...windowProps}
       >
         <div className="windowBar">
