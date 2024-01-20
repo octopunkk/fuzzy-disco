@@ -1,0 +1,18 @@
+html {
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+img {
+  user-select: none;
+}

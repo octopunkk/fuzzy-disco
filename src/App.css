@@ -1,0 +1,80 @@
+.app {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #0b17b4;
+  font-family: VT323;
+}
+
+.screen {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mainTitle {
+  color: white;
+  user-select: none;
+}
+
+.toolbar {
+  width: 100%;
+  height: 40px;
+  background-color: #cccccc;
+  display: flex;
+  flex-direction: row;
+}
+
+.icon {
+  display: flex;
+  position: absolute;
+}
+
+.clock {
+  padding: 3px;
+  margin: 5px;
+  border-left: solid 1px white;
+  border-bottom: solid 1px black;
+  border-right: solid 1px black;
+  border-top: solid 1px white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.window {
+  width: 400px;
+  height: 400px;
+  position: absolute;
+  background-color: #cccccc;
+  border: 1px solid #b9b9b9;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+}
+.windowBar {
+  background-color: #a9a9a9;
+  width: 100%;
+  height: 30px;
+  border-bottom: solid 1px rgb(143, 143, 143);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.close {
+  border-radius: 0%;
+  background-color: #cccccc;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    background-color: #b9b9b9;
+  }
+}
+
+.has-grow {
+  flex-grow: 1;
+}
