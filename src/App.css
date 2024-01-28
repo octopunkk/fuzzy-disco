@@ -84,6 +84,14 @@
   width: 100%;
 }
 
+.bobomb {
+  position: absolute;
+  height: 30px;
+  top: 0px;
+  left: 0px;
+  cursor: grab;
+}
+
 .leftBomb {
   height: 130px;
   width: 110px;

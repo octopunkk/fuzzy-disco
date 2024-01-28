@@ -19,7 +19,7 @@ function App() {
           <p>coucou</p>
         </Window>
         <Window mousePos={mousePos} icon={bombIcon} height="300px">
-          <Bomb />
+          <Bomb mousePos={mousePos} />
         </Window>
 
         <h1 className="mainTitle">ANAIS_95</h1>
