@@ -16,7 +16,6 @@ function App() {
         <Window icon={bombIcon} height="300px">
           <Bomb />
         </Window>
-
         <h1 className="mainTitle">ANAIS_95</h1>
       </div>
       <Toolbar> </Toolbar>

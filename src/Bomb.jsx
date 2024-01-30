@@ -7,13 +7,14 @@ import { useDraggable } from "./utils";
 
 function Bobomb(props) {
   const { windowProps, pos } = useDraggable(null, {
-    startPosition: [40, 190],
+    startPosition: [Math.random() * 200 + 100, Math.random() * 200 + 100],
     bounds: props.windowRef,
   });
+
   return (
     <img
       className="bobomb"
-      src={props.age < 10 ? bombIcon : explosionIcon}
+      src={props.gameTime - props.createdAt > 10 ? explosionIcon : bombIcon}
       style={{ transform: `translate(${pos[0]}px, ${pos[1]}px)` }}
       draggable={false}
       {...windowProps}
@@ -23,33 +24,34 @@ function Bobomb(props) {
 
 export function Bomb(props) {
   const windowRef = useRef(null);
-  const [bobombs, setBobombs] = useState([
-    { color: "black", age: 0 },
-    { color: "black", age: 5 },
-  ]);
+  const [bobombs, setBobombs] = useState([{ color: "black", createdAt: 0 }]);
+  const [gameTime, setGameTime] = useState(0);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      // bobomb doit avoir : heure ed création + heure actuelle pour déterminer si explosion => on update 1 variable a chaque tick au lieu de n
-      setBobombs((prev) =>
-        [...prev].map((a) => {
-          let b = { ...a };
-          b.age = a.age + 1;
-          return b;
-        })
-      );
+      setGameTime((p) => p + 1);
+      if (gameTime % 5 === 0) {
+        setBobombs((b) => [...b, { color: "black", createdAt: gameTime }]);
+      }
     }, 500);
     return () => {
       clearInterval(intervalId);
     };
-  }, []);
+  }, [gameTime]);
   return (
     <div className="bombWindow" ref={windowRef}>
       <img src={bombBg} className="bombBg" draggable={false} />
       <div className="leftBomb" />
       <div className="rightBomb" />
       {bobombs.map((bobomb, index) => {
-        return <Bobomb key={index} windowRef={windowRef} age={bobomb.age} />;
+        return (
+          <Bobomb
+            key={index}
+            windowRef={windowRef}
+            createdAt={bobomb.createdAt}
+            gameTime={gameTime}
+          />
+        );
       })}
     </div>
   );
