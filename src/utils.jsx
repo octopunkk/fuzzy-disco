@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 
 /*
 useDraggable : hook for custom drag and drop an an element
-mousePos = position of the mouse (usually from the App component)
 clickAction = function to execute if the element is clicked on but not moved
 options = optionnal obj to tweak the comportment of the hook
   startPosition: [int, int] = start position, default:  random
@@ -31,7 +30,8 @@ const getPosInBounds = (pos, size, boundsSize) => {
   return posInBounds;
 };
 
-export const useDraggable = (mousePos, clickAction, options = {}) => {
+export const useDraggable = (clickAction, options = {}) => {
+  const [mousePos, setMousePos] = useState([0, 0]);
   const [pos, setPos] = useState(
     options?.startPosition
       ? options.startPosition
@@ -46,6 +46,50 @@ export const useDraggable = (mousePos, clickAction, options = {}) => {
     mouseOnClick: [0, 0],
     offsetOnClick: [0, 0],
   });
+
+  //todo: add new useEffect (with empty array), to add event listener on document to :
+  // - check if pointer is up and execute stuff from onpointer up
+
+  const handlePointerMove = (e) => {
+    setMousePos([e.clientX, e.clientY]);
+    if (clickEv.isClicked) {
+      const pos = [
+        mousePos[0] + clickEv.offsetOnClick[0],
+        mousePos[1] + clickEv.offsetOnClick[1],
+      ];
+
+      if (options.bounds) {
+        setPos(getPosInBounds(pos, [30, 30], [400, 300]));
+      } else {
+        setPos(pos);
+      }
+    }
+  };
+
+  const handlePointerUp = (e) => {
+    if (clickEv.isClicked) {
+      if (
+        clickAction &&
+        Math.abs(clickEv.mouseOnClick[0] - mousePos[0]) < 5 &&
+        Math.abs(clickEv.mouseOnClick[1] - mousePos[1]) < 5
+      ) {
+        clickAction();
+      }
+    }
+    setClickEv((c) => ({ ...c, isClicked: false }));
+  };
+
+  useEffect(() => {
+    document.addEventListener("pointermove", handlePointerMove);
+    document.addEventListener("pointerup", handlePointerUp);
+
+    return () => {
+      document.removeEventListener("pointermove", handlePointerMove);
+      document.removeEventListener("pointerup", handlePointerUp);
+    };
+  }, [clickEv, mousePos]);
+
+  //touchE-eents  ??
 
   useEffect(() => {
     if (clickEv.isClicked) {
@@ -70,17 +114,6 @@ export const useDraggable = (mousePos, clickAction, options = {}) => {
           mouseOnClick: [e.clientX, e.clientY],
           offsetOnClick: [pos[0] - e.clientX, pos[1] - e.clientY],
         });
-      },
-      onPointerUp: (e) => {
-        setClickEv((c) => ({ ...c, isClicked: false }));
-        if (options.bounds) isInside(e, options.bounds);
-        if (
-          clickAction &&
-          Math.abs(clickEv.mouseOnClick[0] - mousePos[0]) < 5 &&
-          Math.abs(clickEv.mouseOnClick[1] - mousePos[1]) < 5
-        ) {
-          clickAction();
-        }
       },
     },
     pos: pos,

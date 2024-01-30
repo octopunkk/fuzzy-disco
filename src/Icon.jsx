@@ -5,7 +5,7 @@ import "./App.css";
 const ICON_SIZE = 75;
 
 function Icon(props) {
-  const { windowProps, pos } = useDraggable(props.mousePos, props.openWindow);
+  const { windowProps, pos } = useDraggable(props.openWindow);
 
   return (
     <div

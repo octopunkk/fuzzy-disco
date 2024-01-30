@@ -5,15 +5,11 @@ import Icon from "./Icon";
 
 function Window(props) {
   const [open, setOpen] = useState(false);
-  const { windowProps, pos } = useDraggable(props.mousePos);
+  const { windowProps, pos } = useDraggable();
 
   return (
     <div>
-      <Icon
-        path={props.icon}
-        mousePos={props.mousePos}
-        openWindow={() => setOpen(true)}
-      />
+      <Icon path={props.icon} openWindow={() => setOpen(true)} />
       <div
         className="window"
         style={{
