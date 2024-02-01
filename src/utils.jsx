@@ -8,9 +8,10 @@ options = optionnal obj to tweak the comportment of the hook
   bounds: {size, boundsSize}
 */
 
-const isInside = (e, ref) => {
-  const innerRect = e.target.getBoundingClientRect();
-  const outerRect = ref.current.getBoundingClientRect();
+export const isInside = (innerRef, outerRef) => {
+  if (!innerRef.current || !outerRef.current) return false;
+  const innerRect = innerRef.current.getBoundingClientRect();
+  const outerRect = outerRef.current.getBoundingClientRect();
   return (
     innerRect.top >= outerRect.top &&
     innerRect.bottom < outerRect.bottom &&
