@@ -106,6 +106,70 @@
   transform: translate(290px, -340px);
 }
 
+.startButton {
+  transform: translate(150px, -450px);
+  height: 50px;
+  width: 100px;
+  font-size: larger;
+  font-weight: 900;
+  font-family: vt323;
+  background-color: #42b42a;
+  color: #f8f8f8;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #239f0b;
+  }
+}
+
+.gameOver {
+  transform: translate(0px, -565px);
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  backdrop-filter: grayscale(100%) blur(2px);
+  height: 100%;
+
+  button {
+    font-size: larger;
+    font-weight: 900;
+    font-family: vt323;
+    height: 50px;
+    width: 100px;
+    background-color: #42b42a;
+    cursor: pointer;
+    color: #f8f8f8;
+
+    &:hover {
+      background-color: #239f0b;
+    }
+  }
+  p {
+    font-size: 50px;
+    font-weight: 900;
+    color: black;
+    background-color: #ebeb00;
+    border: solid;
+    padding: 5px;
+    opacity: 80%;
+  }
+  span {
+    transform: translate(0, -30px);
+    color: white;
+    font-weight: 700;
+    font-size: 20px;
+  }
+}
+
+.score {
+  position: absolute;
+  transform: translate(10px, -50px);
+  font-size: 20px;
+  font-weight: 900;
+}
+
 .has-grow {
   flex-grow: 1;
 }

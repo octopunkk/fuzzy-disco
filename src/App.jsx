@@ -10,9 +10,6 @@ function App() {
   return (
     <div className="app">
       <div className="screen">
-        <Window icon={paintIcon}>
-          <p>coucou</p>
-        </Window>
         <Window icon={bombIcon} height="300px">
           <Bomb />
         </Window>
