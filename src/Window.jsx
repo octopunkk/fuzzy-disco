@@ -5,11 +5,17 @@ import Icon from "./Icon";
 
 function Window(props) {
   const [open, setOpen] = useState(false);
+  // TODO : finish this
+  const [reduce, setReduce] = useState(false);
   const { windowProps, pos } = useDraggable();
 
   return (
     <div>
-      <Icon path={props.icon} openWindow={() => setOpen(true)} />
+      <Icon
+        path={props.icon}
+        openWindow={() => setOpen(true)}
+        startPosition={props?.startPosition}
+      />
       <div
         className="window"
         style={{
@@ -20,6 +26,15 @@ function Window(props) {
       >
         <div className="windowBar" {...windowProps}>
           <div className="has-grow" />
+          <button
+            className="close"
+            onClick={() => {
+              setReduce(true);
+              setOpen(false);
+            }}
+          >
+            -
+          </button>
           <button className="close" onClick={() => setOpen(false)}>
             X
           </button>

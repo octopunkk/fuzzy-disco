@@ -37,8 +37,8 @@ export const useDraggable = (clickAction, options = {}) => {
     options?.startPosition
       ? options.startPosition
       : [
-          Math.random() * 0.5 * window.innerWidth,
-          Math.random() * 0.5 * window.innerHeight,
+          Math.random() * -0.5 * window.innerWidth,
+          Math.random() * -0.5 * window.innerHeight,
         ]
   );
   const [clickEv, setClickEv] = useState({
