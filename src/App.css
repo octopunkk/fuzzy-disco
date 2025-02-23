@@ -1,3 +1,7 @@
+.app * {
+  cursor: var(--cursor) !important;
+}
+
 .app {
   height: 100%;
   display: flex;
@@ -28,7 +32,7 @@
 .icon {
   display: flex;
   position: absolute;
-  cursor: pointer;
+  --cursor: pointer;
   margin: 5px;
   &:hover {
     opacity: 0.8;

@@ -31,7 +31,7 @@ function App() {
   }, []);
 
   return (
-    <div className="app" style={{ cursor: currentCursor == 'default' ? 'default' : 'none' }}>
+    <div className="app" style={{'--cursor': currentCursor == 'default' ? 'auto' : 'none'}}>
       {currentCursor !== 'default' && currentCursor !== 'bubble' && 
         <div className="cursor" style={{ left: cursorPosition[0] - 20, top: cursorPosition[1] - 20}}>
          <img src={currentCursor} alt="cursor" className="cursorImg"/>
