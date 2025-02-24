@@ -1,5 +1,9 @@
 /* MAIN COMPONENTS */
 
+.app * {
+  cursor: var(--cursor) !important;
+}
+
 .app {
   height: 100%;
   display: flex;
@@ -30,6 +34,11 @@
 .icon {
   display: flex;
   position: absolute;
+  --cursor: pointer;
+  margin: 5px;
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 .clock {
@@ -202,4 +211,33 @@
 /* UTILITY CLASSES */
 .has-grow {
   flex-grow: 1;
+}
+
+/* CURSORS  */
+
+.cursor {
+  position: absolute;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.cursorImg {
+  height: 50px;
+  width: 50px;
+}
+
+.cursorButton {
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
+}
+
+.bubble {
+  position: absolute;
+  z-index: 10;
+  pointer-events: none;
+  height: 20px;
+  width: 20px;
+  backdrop-filter: invert(100%);
+  border-radius: 50%;
 }
