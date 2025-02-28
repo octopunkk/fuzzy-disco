@@ -101,9 +101,20 @@ export function Automata(props) {
   return (
     <>
       <canvas ref={canvas} id="canvas"></canvas>
-      {paused && (
+
+      <div className="automata__toolbar">
+      <span
+          className="material-symbols-outlined automata__toolbar-button"
+          onClick={() => {
+            cells.current = randomArray()
+            paint(cells.current)}}
+          
+        >
+          shuffle
+        </span>
+        {paused && (
         <span
-          className="material-symbols-outlined pause"
+          className="material-symbols-outlined automata__toolbar-button"
           onClick={() => setPaused((p) => !p)}
         >
           play_arrow
@@ -111,21 +122,50 @@ export function Automata(props) {
       )}
       {!paused && (
         <span
-          className="material-symbols-outlined pause"
+          className="material-symbols-outlined automata__toolbar-button"
           onClick={() => setPaused((p) => !p)}
         >
           pause
         </span>
       )}
       <span
-        className="material-symbols-outlined settings"
+        className="material-symbols-outlined automata__toolbar-button"
         onClick={() => setSettings((s) => ({ ...s, opened: !s.opened }))}
       >
         settings
       </span>
+      </div>
+
+
       {settings.opened && (
         <Window height="200px" width="200px" windowStartPosition={[420, -150]}>
-          <p>Settings</p>
+          <h3>Settings</h3>
+          <div className="automata__color-pickers">
+            <div>
+              <input type="color" value={colors[0]} onChange={
+                (e) => {
+                  colors[0] = e.target.value;
+                  paint(cells.current);
+                }
+              } />
+            </div>
+            <div>
+              <input type="color" value={colors[1]} onChange={
+                (e) => {
+                  colors[1] = e.target.value;
+                  paint(cells.current);
+                }
+              }/>
+            </div>
+            <div>
+              <input type="color" value={colors[2]} onChange={
+                (e) => {
+                  colors[2] = e.target.value;
+                  paint(cells.current);
+                }
+              } />
+            </div>
+          </div>
         </Window>
       )}
     </>

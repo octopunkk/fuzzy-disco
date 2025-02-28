@@ -192,20 +192,9 @@
   height: 100%;
 }
 
-.settings {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  color: #a9a9a9;
-  cursor: pointer;
-}
-
-.pause {
-  position: absolute;
-  bottom: 10px;
-  right: 40px;
-  color: #a9a9a9;
-  cursor: pointer;
+.automata__toolbar-button {
+  color: #474747;
+  --cursor: pointer;
 }
 
 /* UTILITY CLASSES */
@@ -240,4 +229,29 @@
   width: 20px;
   backdrop-filter: invert(100%);
   border-radius: 50%;
+}
+
+button {
+  --cursor: pointer;
+  font-family: VT323;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.settings__button {
+  background-color: #cccccc;
+  padding: 5px;
+  margin: 5px;
+  cursor: pointer;
+  
+  &:hover {
+    background-color: #b9b9b9;
+    
+  }
+}
+
+.automata__color-pickers {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
